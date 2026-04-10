@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>粟梦 · 生日快乐</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #ffdde1 0%, #f9c9e2 40%, #f9b5d0 100%);
+            font-family: 'Quicksand', 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatAround 18s infinite ease-in-out;
+            font-size: 2rem;
+        }
+        @keyframes floatAround {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-30px) rotate(5deg); opacity: 0.8; }
+            100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+        }
+        .birthday-card {
+            position: relative;
+            z-index: 10;
+            max-width: 750px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 72px 72px 88px 88px;
+            box-shadow: 0 30px 45px rgba(236, 110, 173, 0.25);
+            text-align: center;
+            padding: 2rem;
+        }
+        .cake-icon {
+            font-size: 5rem;
+            filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.2));
+            animation: bounceSoft 2s infinite;
+            display: inline-block;
+        }
+        @keyframes bounceSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.4rem;
+            background: linear-gradient(135deg, #D23B6E, #F78CA2, #FFD166);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .greeting {
+            font-size: 1.4rem;
+            color: #A13E63;
+            margin-top: 0.5rem;
+        }
+        .message-box {
+            background: #FFF9FB;
+            border-radius: 60px;
+            padding: 1.6rem;
+            margin: 2rem 0;
+        }
+        .message-box p {
+            font-size: 1.2rem;
+            line-height: 1.55;
+            color: #4f2d3a;
+        }
+        .wish-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .wish-card {
+            background: rgba(255, 231, 240, 0.8);
+            border-radius: 50px;
+            padding: 0.6rem 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #b1456b;
+        }
+        .music-trigger {
+            background: #d94f7c;
+            border: none;
+            color: white;
+            padding: 12px 26px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 10px 0 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .footer-note {
+            margin-top: 35px;
+            font-size: 0.8rem;
+            color: #b8728b;
+            border-top: 1px dashed #ffbfcf;
+            padding-top: 20px;
+        }
+        @media (max-width: 550px) {
+            h1 { font-size: 2.5rem; }
+            .message-box p { font-size: 1rem; }
+        }
+        .twinkle-star {
+            position: absolute;
+            background: gold;
+            border-radius: 50%;
+            width: 4px;
+            height: 4px;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<div class="floating-bg" id="floatingBg"></div>
+<main class="birthday-card">
+    <div class="cake-icon">🎂✨</div>
+    <h1>粟梦</h1>
+    <div class="greeting">
+        <i class="fas fa-crown"></i> Happy Birthday! <i class="fas fa-crown"></i>
+    </div>
+    <div class="message-box">
+        <p>
+            🌸 致最特别的 <strong>粟梦</strong> 🌸<br>
+            愿你每一岁都奔走在自己的热爱里，<br>
+            如星辰般璀璨，如春风般自由。<br>
+            所有美好与惊喜，如约而至 💖
+        </p>
+    </div>
+    <div class="wish-list">
+        <div class="wish-card"><i class="fas fa-star"></i> 梦想成真</div>
+        <div class="wish-card"><i class="fas fa-heart"></i> 桃花满满</div>
+        <div class="wish-card"><i class="fas fa-champagne-glasses"></i> 前程似锦</div>
+        <div class="wish-card"><i class="fas fa-cake-candles"></i> 天天甜度满分</div>
+    </div>
+    <button class="music-trigger" id="playMusicBtn">
+        <i class="fas fa-music"></i> 播放生日祝福音乐 🎵
+    </button>
+    <div class="footer-note">
+        <span>✨ 来自所有爱你的人 · 特别企划 ✨</span>
+    </div>
+</main>
+<script>
+    // 漂浮元素
+    const bgContainer = document.getElementById('floatingBg');
+    const icons = ['🎈', '🎀', '✨', '⭐', '🌸', '🍰', '🎁', '💝', '🎉', '🥳'];
+    for (let i = 0; i < 40; i++) {
+        const el = document.createElement('div');
+        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        el.classList.add('bubble');
+        el.style.fontSize = (Math.random() * 28 + 16) + 'px';
+        el.style.left = Math.random() * 100 + '%';
+        el.style.top = Math.random() * 100 + '%';
+        el.style.animationDuration = (Math.random() * 15 + 8) + 's';
+        bgContainer.appendChild(el);
+    }
+    for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.classList.add('twinkle-star');
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.width = Math.random() * 6 + 2 + 'px';
+        star.style.height = star.style.width;
+        bgContainer.appendChild(star);
+    }
+    // 音乐播放
+    let audioCtx = null;
+    function playTune() {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const notes = [
+            { freq: 392.00, duration: 0.4 }, { freq: 392.00, duration: 0.4 },
+            { freq: 440.00, duration: 0.4 }, { freq: 392.00, duration: 0.4 },
+            { freq: 523.25, duration: 0.4 }, { freq: 493.88, duration: 0.8 },
+            { freq: 392.00, duration: 0.4 }, { freq: 392.00, duration: 0.4 },
+            { freq: 440.00, duration: 0.4 }, { freq: 392.00, duration: 0.4 },
+            { freq: 587.33, duration: 0.4 }, { freq: 523.25, duration: 0.8 }
+        ];
+        let time = audioCtx.currentTime;
+        notes.forEach(note => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.frequency.value = note.freq;
+            gain.gain.value = 0.25;
+            gain.gain.exponentialRampToValueAtTime(0.00001, time + note.duration);
+            osc.start(time);
+            osc.stop(time + note.duration);
+            time += note.duration;
+        });
+    }
+    document.getElementById('playMusicBtn').addEventListener('click', () => {
+        playTune();
+        const btn = document.getElementById('playMusicBtn');
+        btn.innerHTML = '<i class="fas fa-headphones"></i> 🎶 生日快乐 🎶';
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-music"></i> 播放生日祝福音乐 🎵';
+        }, 2500);
+    });
+    // 点击爱心彩蛋
+    document.querySelector('.birthday-card').addEventListener('click', function(e) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '💖';
+        heart.style.position = 'fixed';
+        heart.style.left = e.clientX + 'px';
+        heart.style.top = e.clientY + 'px';
+        heart.style.fontSize = '1.8rem';
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '9999';
+        heart.style.transition = 'all 0.8s ease';
+        document.body.appendChild(heart);
+        setTimeout(() => {
+            heart.style.opacity = '0';
+            heart.style.transform = 'translateY(-80px)';
+        }, 20);
+        setTimeout(() => heart.remove(), 900);
+    });
+</script>
+</body>
+</html>
